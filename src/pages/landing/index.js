@@ -13,10 +13,12 @@ function Landing() {
   const apiKey = "Generate your own";
 
   const [load, setLoad] = useState(true);
+  const month = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
 
   useEffect(() => {
+    let monthName = month[new Date().getMonth()];
     axios
-      .get("/triptrace/rest/v1/home?month=JUNE&country=India")
+      .get(`/triptrace/rest/v1/home?month=${monthName}&country=India`)
       .then(async (response) => {
         const placeData = response.data;
         setPlaces(placeData);
